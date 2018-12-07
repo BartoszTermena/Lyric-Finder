@@ -6,6 +6,10 @@ const initState = {
 }
 
 const trackReducer = (state = initState, action) => {
+    switch(action.type) {
+        case 'ADD_TRACK': 
+            console.log('add track', action.track)
+    }
     return state
 }
 export default trackReducer

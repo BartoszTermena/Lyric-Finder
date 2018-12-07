@@ -3,7 +3,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import Moment from  'react-moment';
-
+import { connect } from 'react-redux';
+import { trackActions } from '../store/actions/trackActions';
 
 class Lyrics extends Component {
 
@@ -24,6 +25,9 @@ class Lyrics extends Component {
         .catch(err => console.log(err))
     }
 
+    handleClick = (e) => {
+        this.props.trackActions(e)
+    }
   render() {
       const { track, lyrics } = this.state;
    if(track === undefined || lyrics === undefined || Object.keys(track).length === 0 || Object.keys(lyrics).length === 0) {
@@ -35,6 +39,7 @@ class Lyrics extends Component {
             <div className="card">
                 <h5 className="card-header">
                     <strong>{track.track_name}</strong> by {' '} {track.artist_name}
+                    <button onClick={() => this.handleClick(track)}>Add</button>
                 </h5>
                <div className="card-body">
                <p className="card-text">{lyrics.lyrics_body}</p>
@@ -66,5 +71,10 @@ class Lyrics extends Component {
     }
   }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        trackActions: (track) => dispatch(trackActions(track))
+    }
+}
 
-export default Lyrics;
+export default connect(null, mapDispatchToProps)(Lyrics);
