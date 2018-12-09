@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import TrackSummary from './TrackSummary'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+import TrackSummary from './TrackSummary';
+import _ from 'underscore';
 
  class User extends Component {
   render() {
-    const {tracks} = this.props
+    const {tracks} = this.props;
+    const grouped = _.groupBy(tracks,'trackName');
+    const mappedArr = [];
+    _.map(grouped,function(val,key){
+    mappedArr.push({
+        count: val.length,
+        ...val[0]
+    })
+    });
+    console.log(mappedArr)
     return (
       <div>
-          {tracks && tracks.map(track => {
+          {tracks && mappedArr.map(track => {
               return (
                  <TrackSummary track={track} key={track.id} />
               )
@@ -19,8 +31,13 @@ import TrackSummary from './TrackSummary'
 
 const mapStateToProps = (state) => {
     return {
-        tracks: state.track.userTracks
+        tracks: state.firestore.ordered.tracks
     }
 }
 
-export default connect(mapStateToProps)(User)
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+      { collection: 'tracks' }
+    ])
+  )(User)
