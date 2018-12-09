@@ -6,11 +6,12 @@ import Moment from  'react-moment';
 import { connect } from 'react-redux';
 import { trackActions } from '../store/actions/trackActions';
 
+
 class Lyrics extends Component {
 
     state = {
         track: {},
-        lyrics: {}
+        lyrics: {},
     }
  
     componentDidMount() {
@@ -38,8 +39,10 @@ class Lyrics extends Component {
             <Link to ="/" className="btn btn-dark btn-sm mb-4">Go Back</Link>
             <div className="card">
                 <h5 className="card-header">
-                    <strong>{track.track_name}</strong> by {' '} {track.artist_name}
-                    <button onClick={() => this.handleClick(track)}>Add</button>
+                    <strong>{track.track_name}</strong> by {' '} {track.artist_name} {' | '}
+                    <Link to ="/favorite">
+                    <button className="btn btn-warning btn-sm float-right" onClick={() => this.handleClick(track)}>Vote for this track! </button>
+                   </Link>
                 </h5>
                <div className="card-body">
                <p className="card-text">{lyrics.lyrics_body}</p>
@@ -48,9 +51,6 @@ class Lyrics extends Component {
             
             <ul className="list-group mt-3">
                 <li className="list-group-item">
-                    <strong>Album ID</strong>: {track.album_id}
-                </li>
-                <li className="list-group-item">
                 <strong>Song Genre</strong>:{' '}
                     {track.primary_genres.music_genre_list.length !== 0
                         ? track.primary_genres.music_genre_list[0].music_genre
@@ -58,14 +58,11 @@ class Lyrics extends Component {
                         : 'N/A'}
             </li>
             <li className="list-group-item">
-              <strong>Explicit Words</strong>:{' '}
-              {track.explicit === 0 ? 'No' : 'Yes'}
-            </li>
-            <li className="list-group-item">
               <strong>Release Date</strong>:{' '}
               <Moment format="MM/DD/YYYY">{track.first_release_date}</Moment>
             </li>
             </ul>
+            
         </React.Fragment>
        );
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import { Consumer } from '../../context';
 
 class Search extends Component {
@@ -35,9 +36,12 @@ class Search extends Component {
           {value => {
               const { dispatch } = value;
               return (
+                  <div><Link to ="/favorite" className="btn btn-dark btn-sm mb-4">Show users favorite songs</Link>
                   <div className="card card-body mb-4 p-4">
+                  
                     <h1 className="display-4 text-center">
                         <i className="fas fa-music"> Search For A Song :</i>
+                        
                     </h1>
                     <form onSubmit={this.findTrack.bind(this, dispatch)}>
                         <div className="form-group">
@@ -52,6 +56,7 @@ class Search extends Component {
                         type="submit"
                         >Get Track Lyrics</button>
                     </form>
+                  </div>
                   </div>
               );
           }}

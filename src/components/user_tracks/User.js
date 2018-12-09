@@ -16,10 +16,9 @@ import _ from 'underscore';
         ...val[0]
     })
     });
-    console.log(mappedArr)
     return (
       <div>
-          {tracks && mappedArr.map(track => {
+          {tracks && mappedArr.sort((a, b) => b.count - a.count).map(track => {
               return (
                  <TrackSummary track={track} key={track.id} />
               )

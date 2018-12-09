@@ -7,7 +7,7 @@ import Lyrics from './components/tracks/Lyrics';
 import User from './components/user_tracks/User'
 
 import Provider from './context';
-
+import './App.css'
 class App extends Component {
   render() {
     return (
@@ -19,7 +19,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Index} />
                 <Route exact path="/lyrics/track/:id" component={Lyrics} />
-                <Route exact path="/user" component={User} />
+                <Route exact path="/favorite" component={User} />
               </Switch>
             </div>
           </React.Fragment>
