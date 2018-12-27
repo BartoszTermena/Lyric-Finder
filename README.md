@@ -1,6 +1,6 @@
 
 <p align="center">
-<img  src="https://media.giphy.com/media/5ndnDBvwAMhEufo32t/giphy.gif" width="700px">
+<img  src="screen_record_1" width="700px">
 </p>
 
 LIVE DEMO: https://lyric-finder-f1109.firebaseapp.com/
