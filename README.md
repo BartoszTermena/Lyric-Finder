@@ -22,8 +22,6 @@ cd Lyric-Search
 
 npm install
 
-npm install node
-
 npm start
 ```
 
