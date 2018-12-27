@@ -1,3 +1,6 @@
+![](https://gph.is/2VeAybL)
+
+
 LIVE DEMO: https://lyric-finder-f1109.firebaseapp.com/
 
 - Create React App -
