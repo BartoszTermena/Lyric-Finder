@@ -1,4 +1,4 @@
-![](https://gph.is/2VeAybL)
+![](https://media.giphy.com/media/5ndnDBvwAMhEufo32t/giphy.gif)
 
 
 LIVE DEMO: https://lyric-finder-f1109.firebaseapp.com/
